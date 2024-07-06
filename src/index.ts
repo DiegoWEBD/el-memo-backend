@@ -3,7 +3,9 @@ import { type CustomError } from './errors'
 import { createApi } from './infrastructure'
 import { Database } from './infrastructure/database'
 import { PgDatabase } from './infrastructure/database/database.postgres'
+import dotenv from 'dotenv'
 
+dotenv.config()
 const PORT: number = parseInt(process.env.PORT ?? '3001')
 const database: Database = new PgDatabase()
 
