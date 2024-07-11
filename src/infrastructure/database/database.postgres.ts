@@ -15,11 +15,11 @@ export class PgDatabase implements Database {
 	async connect(): Promise<void> {
 		console.log('Connecting to database...')
 		this.connection = pgp({
-			host: 'localhost',
-			port: 5432,
-			database: 'vallepesca-db',
-			user: 'postgres',
-			password: 'Dgo951mz',
+			host: process.env.DB_HOST,
+			port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+			database: process.env.DB_NAME,
+			user: process.env.DB_USERNAME,
+			password: process.env.DB_PASSWORD,
 		})
 		this.isConnected = true
 		console.log('Connected to database')
